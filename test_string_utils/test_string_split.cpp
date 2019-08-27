@@ -10,6 +10,13 @@ TEST(SplitString, TestStringSplitCorrectly)
    ASSERT_THAT(split_string, testing::ElementsAre("Hello", "my", "name", "is", "stringy!"));
 }
 
+TEST(SplitString, TestWideStringSplitCorrectly)
+{
+   const std::wstring string_to_split(L"Hello my name is stringy!");
+   const std::vector<std::wstring> split_string = string_utils::split(string_to_split, std::wstring(L" "));
+   ASSERT_THAT(split_string, testing::ElementsAre(L"Hello", L"my", L"name", L"is", L"stringy!"));
+}
+
 TEST(SplitString, TestStringSplitCorrectlyWhenDelimiterNotInString)
 {
    const std::string string_to_split("Hello");
