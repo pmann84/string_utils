@@ -136,6 +136,7 @@
     <ClCompile Include="test_string_join.cpp" />
     <ClCompile Include="test_string_split.cpp" />
     <ClCompile Include="test_string_startswith.cpp" />
+    <ClCompile Include="test_string_trim.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -53,6 +53,29 @@ namespace string_utils
       return str.size() >= suffix.size() && str.compare(str.size() - suffix.size(), suffix.size(), suffix) == 0;
    }
 
+   template<typename CharT>
+   std::basic_string<CharT> trim_left(const std::basic_string<CharT>& string_to_trim)
+   {
+      typename std::basic_string<CharT>::const_iterator p = string_to_trim.cbegin();
+      while (std::isspace(*p, std::locale())) ++p;
+      return p == string_to_trim.cend() ? std::basic_string<CharT>() : std::basic_string<CharT>(p, string_to_trim.end());
+   }
+
+   template<typename CharT>
+   std::basic_string<CharT> trim_right(const std::basic_string<CharT>& string_to_trim)
+   {
+      typename std::basic_string<CharT>::const_iterator p = string_to_trim.cend() - 1;
+      while (std::isspace(*p, std::locale())) --p;
+      ++p; // Increment to get correct end point
+      return p == string_to_trim.cbegin() ? std::basic_string<CharT>() : std::basic_string<CharT>(string_to_trim.begin(), p);
+   }
+
+   template<typename CharT>
+   std::basic_string<CharT> trim(const std::basic_string<CharT>& string_to_trim)
+   {
+      return trim_right(trim_left(string_to_trim));
+   }
+
    inline std::string from_wstring(const std::wstring& wstr)
    {
       // One Liner: return std::wstring_convert<std::codecvt_utf8<wchar_t>>().to_bytes(wstr);
