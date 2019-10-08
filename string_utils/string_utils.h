@@ -11,6 +11,7 @@ namespace string_utils
    std::vector<std::basic_string<CharT>> split(const std::basic_string<CharT>& string_to_split, const std::basic_string<CharT>& delimiter)
    {
       std::vector<std::basic_string<CharT>> split_string;
+      if (string_to_split.empty()) return split_string;
       std::size_t pos = string_to_split.find(delimiter);
       std::size_t initial_pos = 0;
 
@@ -31,6 +32,7 @@ namespace string_utils
    template<typename CharT>
    std::basic_string<CharT> join(const std::vector<std::basic_string<CharT>>& split_string, const std::basic_string<CharT>& delimiter)
    {
+      if (split_string.size() == 1) return split_string[0];
       std::basic_string<CharT> joined_string;
       for (const auto& str : split_string)
       {
@@ -56,6 +58,7 @@ namespace string_utils
    template<typename CharT>
    std::basic_string<CharT> trim_left(const std::basic_string<CharT>& string_to_trim)
    {
+      if (string_to_trim.empty()) return std::basic_string<CharT>();
       typename std::basic_string<CharT>::const_iterator p = string_to_trim.cbegin();
       while (std::isspace(*p, std::locale())) ++p;
       return p == string_to_trim.cend() ? std::basic_string<CharT>() : std::basic_string<CharT>(p, string_to_trim.end());
@@ -64,6 +67,7 @@ namespace string_utils
    template<typename CharT>
    std::basic_string<CharT> trim_right(const std::basic_string<CharT>& string_to_trim)
    {
+      if (string_to_trim.empty()) return std::basic_string<CharT>();
       typename std::basic_string<CharT>::const_iterator p = string_to_trim.cend() - 1;
       while (std::isspace(*p, std::locale())) --p;
       ++p; // Increment to get correct end point

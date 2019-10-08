@@ -26,3 +26,9 @@ TEST(StringEndsWith, TestStringEndsWithWstring)
    const std::wstring str_to_test(L"Hello my name is stringy!");
    ASSERT_TRUE(string_utils::ends_with(str_to_test, std::wstring(L"stringy!")));
 }
+
+TEST(StringEndsWith, TestEmptyString)
+{
+   const std::wstring str_to_test;
+   ASSERT_FALSE(string_utils::ends_with(str_to_test, std::wstring(L"stringy!")));
+}

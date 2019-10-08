@@ -68,3 +68,10 @@ TEST(TrimString, TestStringIsTrimmedFromBothSides)
    const std::string str_to_test("    Hello  ");
    ASSERT_EQ(string_utils::trim(str_to_test), std::string("Hello"));
 }
+
+TEST(TrimString, TestEmptyStringIsUnChanged)
+{
+   const std::string str_to_test("");
+   ASSERT_EQ(string_utils::trim(str_to_test), std::string(""));
+}
+

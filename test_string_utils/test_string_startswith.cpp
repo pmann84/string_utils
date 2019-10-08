@@ -26,3 +26,9 @@ TEST(StringStartsWith, TestStringStartsWithWstring)
    const std::wstring str_to_test(L"Hello my name is stringy!");
    ASSERT_FALSE(string_utils::starts_with(str_to_test, std::wstring(L"is")));
 }
+
+TEST(StringStartsWith, TestEmptyString)
+{
+   const std::wstring str_to_test(L"");
+   ASSERT_FALSE(string_utils::starts_with(str_to_test, std::wstring(L"stringy!")));
+}
