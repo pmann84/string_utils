@@ -32,13 +32,14 @@ namespace string_utils
    template<typename CharT>
    std::basic_string<CharT> join(const std::vector<std::basic_string<CharT>>& split_string, const std::basic_string<CharT>& delimiter)
    {
+      if (split_string.empty()) return std::basic_string<CharT>();
       if (split_string.size() == 1) return split_string[0];
-      std::basic_string<CharT> joined_string;
-      for (const auto& str : split_string)
+      typename std::vector<std::basic_string<CharT>>::const_iterator it = split_string.begin();
+      std::basic_string<CharT> joined_string = *it++;
+      for (; it != split_string.end(); ++it)
       {
-         joined_string += str;
-         if (std::find(split_string.begin(), split_string.end(), str) != split_string.end() - 1)
-            joined_string += delimiter;
+         joined_string += delimiter;
+         joined_string += *it;
       }
       return joined_string;
    }
