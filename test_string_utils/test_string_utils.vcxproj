@@ -78,6 +78,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)vendor\googletest\googletest\include;$(SolutionDir)vendor\googletest\googlemock\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -134,6 +135,7 @@
     <ClCompile Include="test_string_conversions.cpp" />
     <ClCompile Include="test_string_endswith.cpp" />
     <ClCompile Include="test_string_join.cpp" />
+    <ClCompile Include="test_string_replace.cpp" />
     <ClCompile Include="test_string_split.cpp" />
     <ClCompile Include="test_string_startswith.cpp" />
     <ClCompile Include="test_string_trim.cpp" />

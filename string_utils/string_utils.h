@@ -81,6 +81,20 @@ namespace string_utils
       return trim_right(trim_left(string_to_trim));
    }
 
+   template<typename CharT>
+   std::basic_string<CharT> replace_all(const std::basic_string<CharT>& str, const std::basic_string<CharT>& from, const std::basic_string<CharT>& to)
+   {
+      std::basic_string<CharT> new_str(str);
+      if (from.empty()) return new_str;
+      size_t start_pos = 0;
+      while((start_pos = new_str.find(from, start_pos)) != std::basic_string<CharT>::npos)
+      {
+         new_str.replace(start_pos, from.length(), to);
+         start_pos += to.length();
+      }
+      return new_str;
+   }
+
    inline std::string from_wstring(const std::wstring& wstr)
    {
       // One Liner: return std::wstring_convert<std::codecvt_utf8<wchar_t>>().to_bytes(wstr);

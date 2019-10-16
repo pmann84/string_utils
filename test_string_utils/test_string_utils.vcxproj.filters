@@ -7,5 +7,6 @@
     <ClCompile Include="test_string_split.cpp" />
     <ClCompile Include="test_string_startswith.cpp" />
     <ClCompile Include="test_string_trim.cpp" />
+    <ClCompile Include="test_string_replace.cpp" />
   </ItemGroup>
 </Project>
