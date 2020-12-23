@@ -33,6 +33,12 @@ TEST(TrimString, TestWideStringIsTrimmedFromRightWithSpacesOnly)
    ASSERT_EQ(string_utils::trim_right(str_to_test), std::wstring(L" Hello"));
 }
 
+TEST(TrimString, TestStringIsTrimmedFromRightWithDelimiter)
+{
+    const std::string str_to_test("-Hello----");
+    ASSERT_EQ(string_utils::trim_right(str_to_test, '-'), std::string("-Hello"));
+}
+
 TEST(TrimString, TestStringIsTrimmedFromLeftWithSpacesOnly)
 {
    const std::string str_to_test("    Hello ");
@@ -57,6 +63,12 @@ TEST(TrimString, TestStringIsTrimmedFromLeftWithOtherWhiteSpace)
    ASSERT_EQ(string_utils::trim_left(str_to_test), std::string("Hello"));
 }
 
+TEST(TrimString, TestStringIsTrimmedFromLeftWithDelimiter)
+{
+    const std::string str_to_test("----Hello-");
+    ASSERT_EQ(string_utils::trim_left(str_to_test, '-'), std::string("Hello-"));
+}
+
 TEST(TrimString, TestWideStringIsTrimmedFromLeftWithSpacesOnly)
 {
    const std::wstring str_to_test(L"    Hello ");
@@ -69,9 +81,14 @@ TEST(TrimString, TestStringIsTrimmedFromBothSides)
    ASSERT_EQ(string_utils::trim(str_to_test), std::string("Hello"));
 }
 
+TEST(TrimString, TestStringIsTrimmedFromBothSidesWithDelimiter)
+{
+    const std::string str_to_test("---Hello----");
+    ASSERT_EQ(string_utils::trim(str_to_test, '-'), std::string("Hello"));
+}
+
 TEST(TrimString, TestEmptyStringIsUnChanged)
 {
    const std::string str_to_test("");
    ASSERT_EQ(string_utils::trim(str_to_test), std::string(""));
 }
-

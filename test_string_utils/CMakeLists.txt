@@ -17,7 +17,6 @@ set(
 add_executable(${PROJECT_NAME} ${SOURCES})
 target_link_libraries(${PROJECT_NAME} PUBLIC string_utils)
 
-find_package(googletest)
 target_link_libraries(${PROJECT_NAME} PUBLIC gtest)
 target_link_libraries(${PROJECT_NAME} PUBLIC gtest_main)
 target_link_libraries(${PROJECT_NAME} PUBLIC gmock)

@@ -4,6 +4,7 @@
 #include <vector>
 #include <locale>
 #include <codecvt>
+#include <functional>
 
 namespace string_utils
 {
@@ -56,6 +57,15 @@ namespace string_utils
       return str.size() >= suffix.size() && str.compare(str.size() - suffix.size(), suffix.size(), suffix) == 0;
    }
 
+    template<typename CharT>
+    std::basic_string<CharT> trim_left(const std::basic_string<CharT>& string_to_trim, const CharT delimiter)
+    {
+        if (string_to_trim.empty()) return std::basic_string<CharT>();
+        typename std::basic_string<CharT>::const_iterator p = string_to_trim.cbegin();
+        while (*p == delimiter) ++p;
+        return p == string_to_trim.cend() ? std::basic_string<CharT>() : std::basic_string<CharT>(p, string_to_trim.end());
+    }
+
    template<typename CharT>
    std::basic_string<CharT> trim_left(const std::basic_string<CharT>& string_to_trim)
    {
@@ -64,6 +74,16 @@ namespace string_utils
       while (std::isspace(*p, std::locale())) ++p;
       return p == string_to_trim.cend() ? std::basic_string<CharT>() : std::basic_string<CharT>(p, string_to_trim.end());
    }
+
+    template<typename CharT>
+    std::basic_string<CharT> trim_right(const std::basic_string<CharT>& string_to_trim, const CharT delimiter)
+    {
+        if (string_to_trim.empty()) return std::basic_string<CharT>();
+        typename std::basic_string<CharT>::const_iterator p = string_to_trim.cend() - 1;
+        while (*p == delimiter) --p;
+        ++p; // Increment to get correct end point
+        return p == string_to_trim.cbegin() ? std::basic_string<CharT>() : std::basic_string<CharT>(string_to_trim.begin(), p);
+    }
 
    template<typename CharT>
    std::basic_string<CharT> trim_right(const std::basic_string<CharT>& string_to_trim)
@@ -74,6 +94,12 @@ namespace string_utils
       ++p; // Increment to get correct end point
       return p == string_to_trim.cbegin() ? std::basic_string<CharT>() : std::basic_string<CharT>(string_to_trim.begin(), p);
    }
+
+    template<typename CharT>
+    std::basic_string<CharT> trim(const std::basic_string<CharT>& string_to_trim, const CharT delimiter)
+    {
+        return trim_right(trim_left(string_to_trim, delimiter), delimiter);
+    }
 
    template<typename CharT>
    std::basic_string<CharT> trim(const std::basic_string<CharT>& string_to_trim)
