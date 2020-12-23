@@ -46,4 +46,4 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       shell: bash
       # Execute tests defined by the CMake configuration.  
-      run: ${{runner.workspace}}/build/test_string_utils/test_string_utils.exe
+      run: ${{runner.workspace}}/build/test_string_utils/$BUILD_TYPE/test_string_utils.exe
