@@ -35,4 +35,5 @@ For examples of these see the tests in the tests folder.
 * trim
 * replace_all
 * string to wstring conversion
+* upper and lower case conversion
 
