@@ -136,4 +136,20 @@ namespace string_utils
       std::wstring_convert<convert_str_type, wchar_t> wstring_converter;
       return wstring_converter.from_bytes(sstr);
    }
+
+    template<typename CharT>
+    std::basic_string<CharT> to_upper(const std::basic_string<CharT>& str)
+    {
+        std::basic_string<CharT> upper_str(str);
+        for (auto& c : upper_str) c = std::toupper(c);
+        return upper_str;
+    }
+
+    template<typename CharT>
+    std::basic_string<CharT> to_lower(const std::basic_string<CharT>& str)
+    {
+        std::basic_string<CharT> lower_str(str);
+        for (auto& c : lower_str) c = std::tolower(c);
+        return lower_str;
+    }
 }

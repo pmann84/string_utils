@@ -12,6 +12,7 @@ set(
 		test_string_split.cpp
 		test_string_startswith.cpp
 		test_string_trim.cpp
+		test_string_case.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
