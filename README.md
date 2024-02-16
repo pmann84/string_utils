@@ -3,8 +3,8 @@ A small collection of useful string utility functions.
 
 NOTE: All of this functionality is available in Boost if you have access to this. It's also a lot more complete than this. Sometimes you want simple string parsing in a header only library, without having to compile/link boost.
 
-[!WARNING] 
-This repository is archived in favour of [Sage](https://github.com/pmann84/Sage) which includes this functionality AND MORE!
+> [!WARNING] 
+> This repository is archived in favour of [Sage](https://github.com/pmann84/Sage) which includes this functionality AND MORE!
 
 ## Check out
 If you haven't checked out the code then check it out with all the submodules
